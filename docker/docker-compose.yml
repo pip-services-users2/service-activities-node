@@ -9,7 +9,6 @@ services:
     image: ${IMAGE:-pipdevs/app}
     links:
       - mongo
-      - couchbase
     environment:
       - MONGO_SERVICE_HOST=mongo
       - MONGO_SERVICE_PORT=27017
