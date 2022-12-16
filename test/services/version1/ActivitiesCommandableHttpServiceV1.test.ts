@@ -8,7 +8,7 @@ import { References } from 'pip-services3-commons-nodex';
 import { PartyActivityV1 } from '../../../src/data/version1/PartyActivityV1';
 import { ActivitiesMemoryPersistence } from '../../../src/persistence/ActivitiesMemoryPersistence';
 import { ActivitiesController } from '../../../src/logic/ActivitiesController';
-import { ActivitiesHttpServiceV1 } from '../../../src/services/version1/ActivitiesHttpServiceV1';
+import { ActivitiesCommandableHttpServiceV1 } from '../../../src/services/version1/ActivitiesCommandableHttpServiceV1';
 
 let httpConfig = ConfigParams.fromTuples(
     "connection.protocol", "http",
@@ -35,8 +35,8 @@ let ACTIVITY: PartyActivityV1 = {
     details: null
 };
 
-suite('ActivitiesRestServiceV1', ()=> {
-    let service: ActivitiesHttpServiceV1;
+suite('ActivitiesCommandableHttpServiceV1', ()=> {
+    let service: ActivitiesCommandableHttpServiceV1;
 
     let rest: any;
 
@@ -44,13 +44,13 @@ suite('ActivitiesRestServiceV1', ()=> {
         let persistence = new ActivitiesMemoryPersistence();
         let controller = new ActivitiesController();
 
-        service = new ActivitiesHttpServiceV1();
+        service = new ActivitiesCommandableHttpServiceV1();
         service.configure(httpConfig);
 
         let references: References = References.fromTuples(
             new Descriptor('service-activities', 'persistence', 'memory', 'default', '1.0'), persistence,
             new Descriptor('service-activities', 'controller', 'default', 'default', '1.0'), controller,
-            new Descriptor('service-activities', 'service', 'http', 'default', '1.0'), service
+            new Descriptor('service-activities', 'service', 'commnadable-http', 'default', '1.0'), service
         );
         controller.setReferences(references);
         service.setReferences(references);

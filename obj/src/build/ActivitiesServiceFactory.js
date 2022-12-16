@@ -7,7 +7,7 @@ const ActivitiesMongoDbPersistence_1 = require("../persistence/ActivitiesMongoDb
 const ActivitiesFilePersistence_1 = require("../persistence/ActivitiesFilePersistence");
 const ActivitiesMemoryPersistence_1 = require("../persistence/ActivitiesMemoryPersistence");
 const ActivitiesController_1 = require("../logic/ActivitiesController");
-const ActivitiesHttpServiceV1_1 = require("../services/version1/ActivitiesHttpServiceV1");
+const ActivitiesCommandableHttpServiceV1_1 = require("../services/version1/ActivitiesCommandableHttpServiceV1");
 const ActivitiesGrpcServiceV1_1 = require("../services/version1/ActivitiesGrpcServiceV1");
 const ActivitiesCommandableGrpcServiceV1_1 = require("../services/version1/ActivitiesCommandableGrpcServiceV1");
 class ActivitiesServiceFactory extends pip_services3_components_nodex_1.Factory {
@@ -17,7 +17,7 @@ class ActivitiesServiceFactory extends pip_services3_components_nodex_1.Factory 
         this.registerAsType(ActivitiesServiceFactory.FilePersistenceDescriptor, ActivitiesFilePersistence_1.ActivitiesFilePersistence);
         this.registerAsType(ActivitiesServiceFactory.MongoDbPersistenceDescriptor, ActivitiesMongoDbPersistence_1.ActivitiesMongoDbPersistence);
         this.registerAsType(ActivitiesServiceFactory.ControllerDescriptor, ActivitiesController_1.ActivitiesController);
-        this.registerAsType(ActivitiesServiceFactory.HttpServiceDescriptor, ActivitiesHttpServiceV1_1.ActivitiesHttpServiceV1);
+        this.registerAsType(ActivitiesServiceFactory.CmdHttpServiceDescriptor, ActivitiesCommandableHttpServiceV1_1.ActivitiesCommandableHttpServiceV1);
         this.registerAsType(ActivitiesServiceFactory.GrpcServiceDescriptor, ActivitiesGrpcServiceV1_1.ActivitiesGrpcServiceV1);
         this.registerAsType(ActivitiesServiceFactory.CommandableGrpcServiceDescriptor, ActivitiesCommandableGrpcServiceV1_1.ActivitiesCommandableGrpcServiceV1);
     }
@@ -28,7 +28,7 @@ ActivitiesServiceFactory.MemoryPersistenceDescriptor = new pip_services3_commons
 ActivitiesServiceFactory.FilePersistenceDescriptor = new pip_services3_commons_nodex_1.Descriptor("service-activities", "persistence", "file", "*", "1.0");
 ActivitiesServiceFactory.MongoDbPersistenceDescriptor = new pip_services3_commons_nodex_1.Descriptor("service-activities", "persistence", "mongodb", "*", "1.0");
 ActivitiesServiceFactory.ControllerDescriptor = new pip_services3_commons_nodex_1.Descriptor("service-activities", "controller", "default", "*", "1.0");
-ActivitiesServiceFactory.HttpServiceDescriptor = new pip_services3_commons_nodex_1.Descriptor("service-activities", "service", "http", "*", "1.0");
+ActivitiesServiceFactory.CmdHttpServiceDescriptor = new pip_services3_commons_nodex_1.Descriptor("service-activities", "service", "commandable-http", "*", "1.0");
 ActivitiesServiceFactory.GrpcServiceDescriptor = new pip_services3_commons_nodex_1.Descriptor("service-activities", "service", "grpc", "*", "1.0");
 ActivitiesServiceFactory.CommandableGrpcServiceDescriptor = new pip_services3_commons_nodex_1.Descriptor("service-activities", "service", "commandable-grpc", "*", "1.0");
 //# sourceMappingURL=ActivitiesServiceFactory.js.map
